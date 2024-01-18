@@ -1,0 +1,16 @@
+Dataframe Extract - GIS Pipeline Layer 
+
+from arcgis.features import FeatureLayer, GeoAccessor
+# Establish a connection to your GIS.
+from arcgis.gis import GIS
+
+gis = GIS('https://gisportal.atmosenergy.com/portal/home/',)
+
+FL = FeatureLayer('https://gisportalsandbox.atmosenergy.com/arcgis/rest/services/PipelineSystemMap/MapServer/11')
+#esri_pipe = GeoAccessor.from_layer(FL)‍‍‍
+
+esri_pipe = pd.DataFrame.spatial.from_layer(FL)
+
+esri_pipe = esri_pipe[['GlobalID', 'OBJECTID', 'DATECREATED', 'OWNER', 'DATEMODIFIED', 'SECTIONNAME', 'DESIGNCLASS', 'PROJECTNUMBER','ENGROUTENAME', 'ENGFROMM', 'ENGTOM', 'CONTINROUTENAME', 'MAOPRECORD', 'MAOPUNITOFMEASURE', 'SMYS', 'PERCENTSMYS', 'PIGGABLE']]
+
+esri_pipe.head()
