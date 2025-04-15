@@ -1,0 +1,1 @@
+Just collection of some usefull Python code for geospatial analysis using various libraries such as geopandas and esri
